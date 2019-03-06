@@ -38,6 +38,7 @@ public class InMemoryTimeEntryRepository implements TimeEntryRepository {
             return null;
         }
         timeEntry.setId(id);
+        map.replace(id, timeEntry);
         return timeEntry;
     }
 
