@@ -14,7 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/time-entries")
 public class TimeEntryController {
-    private TimeEntryRepository timeEntriesRepo;
+    //private TimeEntryRepository timeEntriesRepo;
     private final DistributionSummary timeEntrySummary;
     private final Counter actionCounter;
 
@@ -31,7 +31,7 @@ public class TimeEntryController {
     public ResponseEntity<TimeEntry> create(@RequestBody TimeEntry timeEntry){
         TimeEntry entry1 = timeEntryRepository.create(timeEntry);
         actionCounter.increment();
-        timeEntrySummary.record(timeEntriesRepo.list().size());
+        timeEntrySummary.record(timeEntryRepository.list().size());
 
         return ResponseEntity.status(HttpStatus.CREATED).body(entry1);
     }
